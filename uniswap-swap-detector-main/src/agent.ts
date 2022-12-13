@@ -40,7 +40,7 @@ export const provideHandleTx = (factory: string, theProvider: ethers.providers.P
     let token0: string = "0x0000000000000000000000000000000000000000";
     let token1: string = "0x0000000000000000000000000000000000000000";
     let fee: string = "0";
-    const MIN_BALANCE = "5000000000000000000000000" 
+    const MIN_BALANCE = "10000000000000000000000" //5000
 
     // extract swap event arguments
     const { sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick } = swapEvents[i].args;
