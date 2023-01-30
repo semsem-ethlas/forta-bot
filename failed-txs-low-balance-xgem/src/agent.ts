@@ -5,8 +5,6 @@ import {
   TransactionEvent,
   FindingSeverity,
   FindingType,
-  BlockEvent,
-  HandleBlock,
   getEthersProvider,
   ethers,
   getTransactionReceipt
@@ -16,20 +14,21 @@ export const ABI = `[ { "constant": true, "inputs": [ { "name": "_owner", "type"
 export const PAYOUT = "0x2e0f4805a0aa06ef7dbf98802e7b60f78bffb514" // XGEM payout contract
 export const MIN_BALANCE = "1000000000000000000000000" // 1000000 XGEM
 export const XGEM = "0x02649c1ff4296038de4b9ba8f491b42b940a8252" //  XGEM address on polygon
-let BLOCK_INTERVAL = 1;
 export const WALLET = "0x36Be77ebD06AF739227644A23Eb5014f4cd8A7fE" // admin wallet to set merkle root
 export const MIN_BALANCE_MATIC = "5000000000000000000" // 5 MATIC
+let BLOCK_INTERVAL = 1;
 
 const ethersProvider = getEthersProvider()
 
 function provideHandleTransaction(
-  getTransactionReceipt: any
 ): HandleTransaction {
   return async function handleTransaction(txEvent: TransactionEvent) {
     // report finding if a failed transaccion ocur
     const findings: Finding[] = [];
-    const receipt = await getTransactionReceipt(txEvent.hash);
-    if (!receipt.status && txEvent.to === PAYOUT) {
+
+    if (txEvent.to === PAYOUT){
+    const receipt =  await getTransactionReceipt(txEvent.hash);
+    if (!receipt.status) {
         findings.push(
         Finding.fromObject({
           name: "Failed Txn Detection  <@U039M5TLF61> <@U03JC8YLANP> <@U03EBF13R0W>",
@@ -43,21 +42,13 @@ function provideHandleTransaction(
           }
         }));
       }
-    return findings;
-  };
-}
-
-function provideHandleBlock(ethersProvider: ethers.providers.JsonRpcProvider): HandleBlock {
-  return async function handleBlock(blockEvent: BlockEvent) {
-    // report finding if specified PAYOUT balance falls below threshold
-    const findings: Finding[] = []
-
-    const erc20Contract = new ethers.Contract(XGEM, ABI, ethersProvider)
-    const PAYOUTBalance = new BigNumber((await erc20Contract.balanceOf(PAYOUT, {blockTag:blockEvent.blockNumber})).toString())
-    const walletBalance = new BigNumber((await ethersProvider.getBalance(WALLET, blockEvent.blockNumber)).toString())
+    }
     BLOCK_INTERVAL = BLOCK_INTERVAL -1;
-    if (BLOCK_INTERVAL < 0) BLOCK_INTERVAL = 4000;
-    if (PAYOUTBalance.isLessThan(MIN_BALANCE) && BLOCK_INTERVAL === 3999 ){
+    if (BLOCK_INTERVAL === 0) { 
+      BLOCK_INTERVAL = 400002;
+      const erc20Contract = new ethers.Contract(XGEM, ABI, ethersProvider)
+    const PAYOUTBalance = new BigNumber((await erc20Contract.balanceOf(PAYOUT, {blockTag:txEvent.blockNumber})).toString())
+    if (PAYOUTBalance.isLessThan(MIN_BALANCE) && BLOCK_INTERVAL === 400002 ){
     findings.push(
       Finding.fromObject({
         name: "Minimum PAYOUT contract Balance <@U032PFCL2JW> <@U03JC8YLANP> <@U03EBF13R0W>",
@@ -70,7 +61,8 @@ function provideHandleBlock(ethersProvider: ethers.providers.JsonRpcProvider): H
         } 
       }
     ))}
-    else if (walletBalance.isLessThan(MIN_BALANCE_MATIC) && BLOCK_INTERVAL === 3998 ){
+    const walletBalance = new BigNumber((await ethersProvider.getBalance(WALLET, txEvent.blockNumber)).toString())
+    if (walletBalance.isLessThan(MIN_BALANCE_MATIC) && BLOCK_INTERVAL  === 400002 ){
     findings.push(
       Finding.fromObject({
         name: "Minimum wallet Balance <@U032PFCL2JW> <@U03JC8YLANP> <@U03EBF13R0W>",
@@ -84,15 +76,15 @@ function provideHandleBlock(ethersProvider: ethers.providers.JsonRpcProvider): H
       }
     ))
   }
-    return findings;
-  }
 }
+    return findings;
+  };
+}
+
 
 
 
 export default {
   provideHandleTransaction,
-  handleTransaction: provideHandleTransaction(getTransactionReceipt),
-  provideHandleBlock,
-  handleBlock: (provideHandleBlock(ethersProvider))
+  handleTransaction: provideHandleTransaction()
 };
