@@ -1,4 +1,5 @@
 import BigNumber from "bignumber.js";
+import Web3 from "web3";
 import {
   Finding,
   HandleTransaction,
@@ -47,8 +48,10 @@ function provideHandleTransaction(): HandleTransaction {
   return async function handleTransaction(txEvent: TransactionEvent) {
     // report finding if a failed transaccion ocur
     const findings: Finding[] = [];
-    console.log(BLOCK_INTERVAL);
     BLOCK_INTERVAL = BLOCK_INTERVAL - 1;
+    var hours = new Date().getUTCHours();
+    var minutes = new Date().getUTCMinutes();
+    var seconds = new Date().getUTCSeconds();
     if (BLOCK_INTERVAL === 0) {
       BLOCK_INTERVAL = 418000;
     }
@@ -65,7 +68,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_0.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_0})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_0.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_0})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -89,7 +94,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_1.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_1})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_1.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_1})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -113,7 +120,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_2.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_2})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_2.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_2})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -137,7 +146,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_3.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_3})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_3.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_3})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -161,7 +172,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_4.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_4})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_4.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_4})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -185,7 +198,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_5.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_5})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_5.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_5})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -209,7 +224,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_6.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_6})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_6.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_6})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -233,7 +250,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_7.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_7})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_7.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_7})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -257,7 +276,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_fleet_key_8.toString()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_8})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_fleet_key_8.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${prod_fleet_key_8})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -281,7 +302,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_0.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_0})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_0.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_0})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -305,7 +328,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_1.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_1})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_1.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_1})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -329,7 +354,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_2.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_2})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_2.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_2})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -353,7 +380,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_3.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_3})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_3.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_3})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -377,7 +406,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_4.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_4})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_4.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_4})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -401,7 +432,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_5.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_5})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_5.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_5})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -425,7 +458,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_6.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_6})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_6.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_6})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -449,7 +484,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_7.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_7})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_7.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_7})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -473,7 +510,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum fleet_key wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_fleet_key_8.toString()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_8})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_fleet_key_8.toString(10), "ether")
+              .valueOf()}) below threshold (5 MATIC) at wallet (${stage_fleet_key_8})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -497,7 +536,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum pink panther wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_pink_panther_2.toString()}) below threshold (20 MATIC) at wallet (${stage_pink_panther_2})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_pink_panther_2.toString(10), "ether")
+              .valueOf()}) below threshold (20 MATIC) at wallet (${stage_pink_panther_2})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -521,7 +562,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum pink panther wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_stage_pink_panther_3.toString()}) below threshold (20 MATIC) at wallet (${stage_pink_panther_3})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_pink_panther_3.toString(10), "ether")
+              .valueOf()}) below threshold (20 MATIC) at wallet (${stage_pink_panther_3})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -545,7 +588,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum pink panther wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_pink_panther2.toString()}) below threshold (20 MATIC) at wallet (${prod_pink_panther2})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_pink_panther2.toString(10), "ether")
+              .valueOf()}) below threshold (20 MATIC) at wallet (${prod_pink_panther2})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -569,7 +614,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum pink panther wallet Balance <@U038711QCNT>",
-            description: `wallet MATIC balance (${walletBalance_prod_pink_panther3.toString()}) below threshold (20 MATIC) at wallet (${prod_pink_panther3})`,
+            description: `wallet MATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_pink_panther3.toString(10), "ether")
+              .valueOf()}) below threshold (20 MATIC) at wallet (${prod_pink_panther3})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -596,7 +643,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "production Minimum pink panther wallet Balance <@U038711QCNT>",
-            description: `wallet WMATIC balance (${walletBalance_prod_pink_panther1.toString()}) below threshold (20 MATIC) at wallet (${prod_pink_panther1})`,
+            description: `wallet WMATIC balance (${Web3.utils
+              .fromWei(walletBalance_prod_pink_panther1.toString(10), "ether")
+              .valueOf()}) below threshold (20 MATIC) at wallet (${prod_pink_panther1})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -623,7 +672,9 @@ function provideHandleTransaction(): HandleTransaction {
         findings.push(
           Finding.fromObject({
             name: "stage Minimum pink panther wallet Balance <@U038711QCNT>",
-            description: `wallet WMATIC balance (${walletBalance_stage_pink_panther_1.toString()}) below threshold (20 MATIC) at wallet (${stage_pink_panther_1})`,
+            description: `wallet WMATIC balance (${Web3.utils
+              .fromWei(walletBalance_stage_pink_panther_1.toString(10), "ether")
+              .valueOf()}) below threshold (20 MATIC) at wallet (${stage_pink_panther_1})`,
             alertId: "FORTA-6",
             severity: FindingSeverity.Info,
             type: FindingType.Suspicious,
@@ -633,6 +684,259 @@ function provideHandleTransaction(): HandleTransaction {
           })
         );
       }
+    }
+
+    if (hours == 2 && minutes == 0 && seconds >= 10 && seconds <= 20) {
+      console.log("hours: " + hours);
+      console.log("minutes: " + minutes);
+      console.log("seconds: " + seconds);
+      const walletBalance_prod_fleet_key_0 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_0, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_fleet_key_1 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_1, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_fleet_key_2 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_2, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_fleet_key_3 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_0, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_fleet_key_4 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_4, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_fleet_key_5 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_5, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_fleet_key_6 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_6, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_fleet_key_7 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_7, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_fleet_key_8 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_fleet_key_8, txEvent.blockNumber)
+        ).toString()
+      );
+      const walletBalance_prod_pink_panther2 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_pink_panther2, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_prod_pink_panther3 = new BigNumber(
+        (
+          await ethersProvider.getBalance(prod_pink_panther3, txEvent.blockNumber)
+        ).toString()
+      );
+      const erc20Contract = new ethers.Contract(WMATIC, ABI, ethersProvider);
+      const walletBalance_prod_pink_panther1 = new BigNumber(
+        (
+          await erc20Contract.balanceOf(prod_pink_panther1, {
+            blockTag: txEvent.blockNumber
+          })
+        ).toString()
+      );
+
+      findings.push(
+        Finding.fromObject({
+          name: "production fleet_keys & pink_panther Balance",
+          description: `wallet (${prod_fleet_key_0}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_0.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_fleet_key_1}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_1.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_fleet_key_2}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_2.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_fleet_key_3}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_3.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_fleet_key_4}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_4.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_fleet_key_5}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_5.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_fleet_key_6}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_6.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_fleet_key_7}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_7.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_fleet_key_8}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_fleet_key_8.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_pink_panther1}) WMATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_pink_panther1.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_pink_panther2}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_pink_panther2.toString(10), "ether")
+            .valueOf()})
+          wallet (${prod_pink_panther3}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_prod_pink_panther3.toString(10), "ether")
+            .valueOf()}) `,
+          alertId: "prod-1",
+          severity: FindingSeverity.Info,
+          type: FindingType.Suspicious,
+          metadata: {
+            balance: walletBalance_prod_pink_panther1.toString()
+          }
+        })
+      );
+    }
+    if (hours == 2 && minutes == 0 && seconds >= 10 && seconds <= 20) {
+      console.log("hours: " + hours);
+      console.log("minutes: " + minutes);
+      console.log("seconds: " + seconds);
+      const walletBalance_stage_fleet_key_0 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_0, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_fleet_key_1 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_1, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_fleet_key_2 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_2, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_fleet_key_3 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_3, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_fleet_key_4 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_4, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_fleet_key_5 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_5, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_fleet_key_6 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_6, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_fleet_key_7 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_7, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_fleet_key_8 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_fleet_key_8, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_pink_panther_2 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_pink_panther_2, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const walletBalance_stage_pink_panther_3 = new BigNumber(
+        (
+          await ethersProvider.getBalance(stage_pink_panther_3, txEvent.blockNumber)
+        ).toString()
+      );
+
+      const erc20Contract = new ethers.Contract(WMATIC, ABI, ethersProvider);
+      const walletBalance_stage_pink_panther_1 = new BigNumber(
+        (
+          await erc20Contract.balanceOf(stage_pink_panther_1, {
+            blockTag: txEvent.blockNumber
+          })
+        ).toString()
+      );
+
+      findings.push(
+        Finding.fromObject({
+          name: "staging fleet_keys & pink_panther Balance",
+          description: `wallet (${stage_fleet_key_0}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_0.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_fleet_key_1}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_1.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_fleet_key_2}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_2.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_fleet_key_3}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_3.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_fleet_key_4}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_4.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_fleet_key_5}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_5.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_fleet_key_6}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_6.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_fleet_key_7}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_7.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_fleet_key_8}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_fleet_key_8.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_pink_panther_1}) WMATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_pink_panther_1.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_pink_panther_2}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_pink_panther_2.toString(10), "ether")
+            .valueOf()})
+          wallet (${stage_pink_panther_3}) MATIC balance (${Web3.utils
+            .fromWei(walletBalance_stage_pink_panther_3.toString(10), "ether")
+            .valueOf()}) `,
+          alertId: "stage-1",
+          severity: FindingSeverity.Info,
+          type: FindingType.Suspicious,
+          metadata: {
+            balance: walletBalance_stage_pink_panther_1.toString()
+          }
+        })
+      );
     }
     return findings;
   };
