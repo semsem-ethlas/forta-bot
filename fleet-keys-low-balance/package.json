@@ -3,7 +3,8 @@
   "version": "0.1.3",
   "description": "Forta Agent Typescript minimum-balance project",
   "chainIds": [
-    137
+    137,
+    56
   ],
   "scripts": {
     "build": "tsc",
